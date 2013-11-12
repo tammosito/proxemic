@@ -1,0 +1,164 @@
+     $pacman-color: #FFFF00;
+     $mouth-color: #C2DF7F;
+     $animation-duration: 15s;
+
+     .pacman-holder{
+          position:relative;
+          width:200px;
+     }
+     .pacman-container {
+          display:block;
+          width:100px;
+          height: 100px;
+          -webkit-transform:rotate(45deg);
+          -moz-transform:rotate(45deg);
+          -o-transform:rotate(45deg);
+          transform:rotate(45deg);
+          -moz-animation: bite 0.5s linear infinite; 
+          -webkit-animation: bite 0.5s linear infinite; 
+          animation: bite 0.5s linear infinite;
+     }
+     .pacman-body {
+          background-color: $pacman-color;
+          position: absolute;
+          width: 100px;
+          height: 100px;
+          -moz-border-radius: 50px;
+          -webkit-border-radius: 50px;
+          -o-border-radius: 50px;
+          border-radius: 50px;
+     }
+
+     .pacman {
+          position: absolute;
+          width: 100px;
+          height: 100px;
+          -moz-border-radius: 50px;
+          -webkit-border-radius: 50px;
+          -o-border-radius: 50px;
+          border-radius: 50px;
+          clip: rect(0px, 50px, 100px, 0px);
+          z-index:2;
+     }
+     .pacman-mouth {
+          position: absolute;
+          left:2px;
+          width: 102px;
+          height: 102px;
+          -moz-border-radius: 50px;
+          -webkit-border-radius: 50px;
+          -o-border-radius: 50px;
+          border-radius: 50px;
+          clip: rect(0px, 100px, 100px, 52px);
+     }
+
+     .pacman-mouth .pacman {
+          background-color: $mouth-color;
+          -webkit-transform:rotate(90deg);
+          -moz-transform:rotate(90deg);
+          -o-transform:rotate(90deg);
+          transform:rotate(90deg);
+          -moz-animation: munch 0.5s linear infinite; 
+          -webkit-animation: munch 0.5s linear infinite; 
+          animation: munch 0.5s linear infinite;
+	
+		  /* To fix a yellow border on pacman's mouth */
+		  border: 3px solid $mouth-color;
+     }
+
+     .pacman-holder.moving{
+          width:100px;
+          animation: move $animation-duration linear infinite;
+          margin-bottom: 1%;
+     }
+
+     .dot {
+          background-color: #fff;
+          position: absolute;
+          z-index:0;
+          top:40px;
+          left:200px;
+          width: 20px;
+          height: 20px;
+          -moz-border-radius: 50px;
+          -webkit-border-radius: 50px;
+          -o-border-radius: 50px;
+          border-radius: 50px;
+          -moz-animation: movedot 0.5s linear infinite;
+          -webkit-animation: movedot 0.5s linear infinite;
+          animation: movedot 0.5s linear infinite;
+          -moz-animation-delay:0.2s; 
+          -webkit-animation-delay:0.2s; 
+          animation-delay:0.2s;
+     }
+     .pacman-holder.moving .dot{
+          -moz-animation: movedot 1s linear infinite; 
+          -webkit-animation: movedot 1s linear infinite;
+          animation: movedot 1s linear infinite;
+          -moz-animation-delay:0.2s;
+          -webkit-animation-delay:0.2s;
+          animation-delay:0.2s;
+     }
+
+
+     @keyframes munch
+     {
+          0% {
+               transform:rotate(90deg);
+          }
+          50% {
+               transform:rotate(0deg);
+          }
+          100% {
+               transform:rotate(90deg);
+          }
+     }
+
+     @keyframes bite
+     {
+          0% {
+               transform:rotate(45deg);
+          }
+          50% {
+               transform:rotate(90deg);
+          }
+          100% {
+               transform:rotate(45deg);
+          }
+     }
+
+
+	@keyframes move
+		 {
+			  0% {
+				   transform: scaleX(1);           
+				   left:-600px;
+			  }
+	
+			  49.999% {
+				   left:200%;
+				   transform: scaleX(1);
+			  }
+			  50%{
+				transform: scaleX(-1);
+		   }
+	
+		   100% {
+			  left:-600px;
+			  transform: scaleX(-1);     
+		 }          
+	}
+
+     @keyframes movedot 
+     {
+          0% {
+               left:200px;
+               opacity: 0;
+          }
+          20% {
+               opacity: 1;
+          }
+          100% {
+               left:50px;
+          }
+     }

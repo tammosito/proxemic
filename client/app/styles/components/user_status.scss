@@ -1,0 +1,19 @@
+#user_status {
+	z-index: 100;
+	position: absolute;
+	top: 0;
+	bottom: auto;
+	right: 20px;
+	font-size: 10vw;
+	width: auto;
+	height: auto;
+	color: #fff;
+	transition: all 2s;
+
+	.none, .user_lost {
+		color: transparent;
+	}
+	.user_detected {
+		color: #fff;
+	}
+}
